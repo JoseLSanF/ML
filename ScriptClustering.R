@@ -105,3 +105,38 @@ celltype_annotator<-function(data, modulename){
 }
 #Preueba de uso
 result<-celltype_annotator(data=cells_data, modulename = "yellow")
+
+
+##############################
+#Funcion que mira un modulo y una anotacion. Hay que cambiar la ruta del fichero.
+fichero <- "/home/jlsanchez/ML/netMyRosMap.13.it.20.rds_gprof.csv"
+
+
+funcion_modulo <- function(fichero, nombre_modulo, tipo_anotacion) {
+  data <- read.csv(fichero,stringsAsFactors=F)
+  module <-  data[data$query.number == nombre_modulo & data$domain == tipo_anotacion,]
+  module <- module[order(module$p.value)[1:10],c("term.name","domain","p.value"),]
+  lista <- lapply(1:nrow(module),function(x){
+    return (module[x,1])
+  })
+  return(lista)
+  }
+
+##################
+#Declaración variables
+conjunto_anotaciones <- c("CC","MF","BP","keg","rea")
+#Es necesario definir conjunto_modulos.
+#conjunto_modulos = 
+
+#Bucle iterando por cada módulo todas las anotaciones posibles.
+
+lis_mod_an <- lapply(conjunto_modulos, function(x){
+  lista_auxiliar <- lapply(conjunto_anotaciones,function(y){
+    return(funcion_modulo(fichero,x,y))
+  })
+  names(lista_auxiliar) <- conjunto_anotaciones
+  return(lista_auxiliar)
+  })
+names(lis_mod_an) <- conjunto_modulos
+
+
