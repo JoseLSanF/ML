@@ -122,5 +122,18 @@ annot_list <- lapply(totalmod, function(x){
   return(aux_list)
   })
 names(annot_list) <- totalmod
+###Extraer genes con MM más alto de cada modulo###
+mm<-getMM(tissue = networkname, which.one = "new", genes = colnames(expr_data),
+          expr.data.file = expr_data) #Extrae el mm de todos los genes
+TopGenes_list<-lapply(totalmod, function(x){
+  df<-topmm_genextractor(mmdata = mm, modulename = x, cutoff = 5)
+  return(df)
+})
+names(TopGenes_list)<-totalmod
+
+
+
+
+
 
 
