@@ -3,6 +3,7 @@ setwd("/home/albert/Bioinfo/MachineLearning/TareasFinales")
 library(CoExpNets)
 library(CoExpROSMAP)
 library(WGCNA)
+source("EnrichmentAnnotationFunctions.R")#Carga las funciones
 CoExpROSMAP::initDb()
 #########DEJAR EN TRUE###############
 loadnetwork<-TRUE
@@ -96,47 +97,30 @@ selectModules<-as.character(sapply(1:nrow(covarCorr_data), function(x){
   }
 }))
 selectModules<-selectModules[selectModules!="NULL"]
+#Basados en numero de genes
+modulesize<-as.numeric(sapply(unique(expr_network$moduleColors), function(x){
+  l<-length(which(expr_network$moduleColors == x))
+  return(l)
+}))
+modsize_df<-data.frame(ModName=unique(expr_network$moduleColors), ModSize=modulesize)
+modsize_df<-modsize_df[order(modsize_df$ModSize, decreasing = TRUE),]
+selectModulesII<-as.character(modsize_df$ModName[1:4])
 #############################
-####Funcion de anotación de tipo ceular
-celltype_annotator<-function(data, modulename){
-  w<-which(data[, modulename]<1)
-  annotations<-data.frame(AnnotName=rownames(data)[w], AnnotScore=data[w,modulename])
-  return(annotations)
-}
-#Preueba de uso
-result<-celltype_annotator(data=cells_data, modulename = "yellow")
-
-
-##############################
-#Funcion que mira un modulo y una anotacion. Hay que cambiar la ruta del fichero.
-fichero <- "/home/jlsanchez/ML/netMyRosMap.13.it.20.rds_gprof.csv"
-
-
-funcion_modulo <- function(fichero, nombre_modulo, tipo_anotacion) {
-  data <- read.csv(fichero,stringsAsFactors=F)
-  module <-  data[data$query.number == nombre_modulo & data$domain == tipo_anotacion,]
-  module <- module[order(module$p.value)[1:10],c("term.name","domain","p.value"),]
-  lista <- lapply(1:nrow(module),function(x){
-    return (module[x,1])
-  })
-  return(lista)
-  }
-
-##################
-#Declaración variables
-conjunto_anotaciones <- c("CC","MF","BP","keg","rea")
-#Es necesario definir conjunto_modulos.
-#conjunto_modulos = 
-
+####Analisis de los modulos#### 
+totalmod<-c(selectModules, selectModulesII)
+annotations <- c("CC","MF","BP","keg","rea", "celltype")
 #Bucle iterando por cada módulo todas las anotaciones posibles.
-
-lis_mod_an <- lapply(conjunto_modulos, function(x){
-  lista_auxiliar <- lapply(conjunto_anotaciones,function(y){
-    return(funcion_modulo(fichero,x,y))
+annot_list <- lapply(totalmod, function(x){
+  aux_list <- lapply(annotations,function(y){
+    if(y != "celltype"){
+      return(functional_annotator(data=go_data, modulename = x, annot_type = y))
+    }else{
+      return(celltype_annotator(data = cells_data, modulename = x))
+    }
   })
-  names(lista_auxiliar) <- conjunto_anotaciones
-  return(lista_auxiliar)
+  names(aux_list) <- annotations
+  return(aux_list)
   })
-names(lis_mod_an) <- conjunto_modulos
+names(annot_list) <- totalmod
 
 
