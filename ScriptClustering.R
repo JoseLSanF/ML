@@ -92,19 +92,14 @@ corrplot(cor(egs), type = "upper", tl.cex = 0.5, order='hclust')
 ####Seleccion de modulos####
 #Basados en correlacion con covariables
 selectModules<-as.character(sapply(1:nrow(covarCorr_data), function(x){
-  if(length(which((covarCorr_data[x,]>1.5))) > 0){ #Coge los modulos que tengan corr > 1.5 en CUALQUIER covariable
+  if(length(which((covarCorr_data[x,]>2))) > 0){ #Coge los modulos que tengan corr > 1.5 en CUALQUIER covariable
     return(rownames(covarCorr_data)[x])
   }
 }))
 selectModules<-selectModules[selectModules!="NULL"]
-#Basados en numero de genes
-modulesize<-as.numeric(sapply(unique(expr_network$moduleColors), function(x){
-  l<-length(which(expr_network$moduleColors == x))
-  return(l)
-}))
-modsize_df<-data.frame(ModName=unique(expr_network$moduleColors), ModSize=modulesize)
-modsize_df<-modsize_df[order(modsize_df$ModSize, decreasing = TRUE),]
-selectModulesII<-as.character(modsize_df$ModName[1:4])
+#Basados en numero de terminos de anotación
+term_matrix<-as.matrix(sort(table(go_data$query.number), decreasing = TRUE))
+selectModulesII<-as.character(rownames(term_matrix)[1:4])
 #############################
 ####Analisis de los modulos#### 
 totalmod<-c(selectModules, selectModulesII)
