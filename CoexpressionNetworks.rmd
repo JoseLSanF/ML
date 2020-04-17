@@ -152,33 +152,25 @@ covarCorr_data<-CoExpNets::corWithCatTraits(which.one="new", tissue=networkname,
 write.csv(covarCorr_data, file = "./CoexpressionResults/CovariableCorrelation.csv", quote = FALSE)
 ```
 
-# Module visualization
+## Module visualization
 
 Prior to the analysis of the modules, a quick visualization of some of their features was performed. This included their size, the correlation between them and their hierarchical relationships.
 
-# Módulos
+To plot the size, the function *CoExpNets::plotModSizes* is used. The size is represented as a barplot. The height of the bars corresponds to the number of gene that consititutes each module
 
-
-
-Tamaño de los modulos
 ```{r}
 CoExpNets::plotModSizes(tissue=networkname,which.one="new")
 ```
+To see the correlation of the modules, first a so called Eigengene of each module were calculated, using the function *getNetworkEigengenes*. This is not a true gene, rather is a variable constructed by performing PCA with the gene expression values of the modules. To be precise, is the first component of the PCA, and therefore is a "theoretical" gene that represents the best the whole module.
+First we showd the correlation with a corrplot, and then a hierarchical cluster as a dendogram, using *plotEGClustering*
 
-
-Clustering jerarquico de los modulos
-```{r}
-plotEGClustering(which.one="new",tissue=networkname)
-```
-
-
-Correlacion entre modulos
 ```{r}
 library(corrplot)
 egs<-getNetworkEigengenes(which.one="new",tissue=networkname)
 corrplot(cor(egs), type = "upper", tl.cex = 0.5, order='hclust')
+plotEGClustering(which.one="new",tissue=networkname)
 ```
-
+The correlated modules appear close together in the dendogram.
 
 La correlación de módulos con las variables deja ver una clara relación entre los módulos y el intervalo post-mortem, que es una variable técnica, que no tiene relación con la parte biológica. Es significancia de correlación. A partir de 1.3 es significativo, nosotros lo hemos puesto en 2.
 
