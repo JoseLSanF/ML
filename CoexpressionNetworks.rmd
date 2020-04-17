@@ -172,11 +172,13 @@ plotEGClustering(which.one="new",tissue=networkname)
 ```
 The correlated modules appear close together in the dendogram.
 
-La correlación de módulos con las variables deja ver una clara relación entre los módulos y el intervalo post-mortem, que es una variable técnica, que no tiene relación con la parte biológica. Es significancia de correlación. A partir de 1.3 es significativo, nosotros lo hemos puesto en 2.
+The correlation of modules with the variables showed a clear relationship between the modules and the post-mortem interval, which was a technical variable, not related to the biological part. A value of 2 was assigned to the significance of the correlation.
 
-## Seleccion de modulos
+## Module selection
 
-Basados en correlacion con covariables. 
+### Based on correlation with covariates 
+
+The genes that had a correlation greater than 2 in any covariate were chosen. 
 ```{r}
 selectModules<-as.character(sapply(1:nrow(covarCorr_data), function(x){
   if(length(which((covarCorr_data[x,]>2))) > 0){ #Coge los modulos que tengan corr > 2 en CUALQUIER covariable
@@ -187,22 +189,23 @@ selectModules<-selectModules[selectModules!="NULL"]
 ```
 
 
-Basados en numero de terminos de anotación
-Se escogen los 4 módulos que tengan un mayor número de ¿términos anotados?
+### Based on number of annotation terms
+
+The 4 modules with the highest query number were chosen.
 ```{r}
 term_matrix<-as.matrix(sort(table(go_data$query.number), decreasing = TRUE))
 selectModulesII<-as.character(rownames(term_matrix)[1:4])
 ```
 
-Se guardan juntos todos los módulos a analizar y los distintos tipos de anotaciones. 
+All the modules that were going to be analysed and the different types of annotations were stored together in their variables. 
 ```{r}
 totalmod<-c(selectModules, selectModulesII)
 annotations <- c("CC","MF","BP","keg","rea", "celltype")
 ```
 
-## Analisis de los modulos 
+## Module analysis
 
-Se hace un bucle iterando por cada módulo y por cada anotación para obtener todas las anotaciones de todos los módulos. 
+A loop was made by iterating each module and each annotation to obtain all the annotations of all the modules. 
 ```{r}
 annot_list <- lapply(totalmod, function(x){
   aux_list <- lapply(annotations,function(y){
@@ -218,8 +221,8 @@ annot_list <- lapply(totalmod, function(x){
 names(annot_list) <- totalmod
 ```
 
-Se obtiene una lista con todos los módulos, que a su vez cada uno tiene 6 listas que son cada una de las anotaciones. 
-Se procede a la extracción de los genes con el MM más alto de cada módulo para su análisis.
+It was obtained a list with every modules,  which in turn have 6 lists that are each of the annotations.  
+The genes with the highest MM in each module were extracted for their analysis.
 ```{r}
 mm<-getMM(tissue = networkname, which.one = "new", genes = colnames(expr_data),
           expr.data.file = expr_data) #Extrae el mm de todos los genes
@@ -231,7 +234,7 @@ names(TopGenes_list)<-totalmod
 ```
 
 
-## Descripción de los módulos
+## Module Description
 
 ### Thistle1
 
@@ -274,7 +277,7 @@ CPED1 is a gen of which there is no known function. PDCD4-AS1 encodes a long non
 
 
 
-# Bibliografía
+# Bibliography
 
 Paula I. Moreira , Cristina Carvalho, Xiongwei Zhu,  Mark A. Smith , George Perry : Mitochondrial dysfunction is a trigger of Alzheimer's disease pathophysiology. _Biochimica et Biophysica_ Acta 2010, 1802 2:10
 
