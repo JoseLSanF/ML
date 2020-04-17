@@ -20,13 +20,13 @@ Appart from these functions, only the packages CoExpNets, CoExpROSMAP and WGCNA 
 Now the mentioned packages were loaded as well as the file with the custom functions.
 
 ```{r}
-
+####Change to desired working directory####
 setwd("/home/albert/Bioinfo/MachineLearning/TareasFinales")
-#Carga librerias
+
 library(CoExpNets)
 library(CoExpROSMAP)
 library(WGCNA)
-source("EnrichmentAnnotationFunctions.R")#Carga las funciones
+source("EnrichmentAnnotationFunctions.R")
 ```
 
 ## Data acquisition and visualization
@@ -137,7 +137,7 @@ cells_data<-CoExpNets::cellTypeByModule(return.processed = FALSE,
                                         net.in=networkname,
                                         legend="ROS/MAP cell type signals")
 
-cells_data<-as.data.frame(cells_data)#Idem con cells_data
+cells_data<-as.data.frame(cells_data)#Now it can be worked with normally
 write.csv(cells_data, "./CoexpressionResults/CelltypeCorrelation.csv", quote = FALSE)
 ```
 ### Correlation significance with the covariables
@@ -148,12 +148,13 @@ This time, the function *CoExpNets::corWithCatTraits* was utilized. It requires 
 filt_metadata<-metadata[rowstoinclude, ]
 m<-match(rownames(expr_data), rownames(filt_metadata))
 filt_metadata<-filt_metadata[m,]
-stopifnot(identical(rownames(expr_data),rownames(filt_metadata)))#Asegurate
+stopifnot(identical(rownames(expr_data),rownames(filt_metadata)))#Make sure they are identical
 covarCorr_data<-CoExpNets::corWithCatTraits(which.one="new", tissue=networkname,
                                             covs=filt_metadata,
                                             covlist = colnames(metadata))
 write.csv(covarCorr_data, file = "./CoexpressionResults/CovariableCorrelation.csv", quote = FALSE)
 ```
+
 # Module visualization
 
 Prior to the analysis of the modules, a quick visualization of some of their features was performed. This included their size, the correlation between them and their hierarchical relationships.
