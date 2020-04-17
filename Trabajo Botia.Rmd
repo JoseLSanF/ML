@@ -258,7 +258,7 @@ Los tres genes con mayor MM son TBC1D10, una proteína activadora de GTPasa de t
 
 ### Darkturquoise
 
-El módulo darkturquoise presenta genes relacionados con rutas de señalización, respuesta inmunitaria a infecciones víricas a través de rutas como la del interferón y proteínas que interaccionan con el RNA. Sus genes se encuentran expresados en el citosol celular. Los tipos celulares asociados a este módulo los los linfocitos T colaboradores (TH) y la microglía, ambos relacionados con el sistema inmunitario. Es interesante el hecho que algunos tipos de virus podrían tener relación con la neuropatología del alzheimer. (Sochocka _et al_ 2017).
+The darkturquoise module had genes related to signalling pathways, immune response to virial infections through pathways such as interferon and proteins that interact with RNA. Its genes were expressed in the cellular cytosol. Cell types associated with this module were T helper lymphocytes and the microglia, both related with immune system. The fact that some  virus types may be related to the neuropathology of alzheimer's disease it is interested (Sochocka _et al_ 2017).
 
 CXCL5 es una citoquina de la familia CXC. SAMD9L un gen cuya alteración implica enfermedades que afectan al cerebro como el síndrome de ataxia-pancitopenia. UBA7 es una proteína involucrada en ubiquitinación. PATL2 es un gen que codifica una proteína de unión a ARN, cuya alteración se asocia a problemas de fertilidad.
 
