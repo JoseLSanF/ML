@@ -281,7 +281,7 @@ CPED1 is a gen of which there is no known function. PDCD4-AS1 encodes a long non
 
 
 
-# Bibliography
+## Bibliography
 
 Paula I. Moreira , Cristina Carvalho, Xiongwei Zhu,  Mark A. Smith , George Perry : Mitochondrial dysfunction is a trigger of Alzheimer's disease pathophysiology. _Biochimica et Biophysica_ Acta 2010, 1802 2:10
 
