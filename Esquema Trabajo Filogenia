@@ -1,0 +1,19 @@
+Paso 0: Preprocesamiento:
+	-Conseguir secuencia en Galaxy. Queda confirmado que se puede.
+	-Comprobar calidad alineamiento.
+Paso 1: Ensamblado.
+	-Ensamblado. ¿Qué herramienta usamos para ello? 
+Paso 2: Anotación.
+	-Anotación en servidor público. 
+Paso 3: Literatura.
+	-Buscar en literatura miembros de la familia de los cannabinoides.
+	-Mirar en bases de datos qué términos tienen, por si se puede filtrar. 
+Paso 4: Filogenia.
+	-Hacer las búsquedas de filogenia y relacionar los genes interesantes. 
+	-Sacar genes por homología y organismos. 
+	-Vamos a sacar en principio 10 secuencias por gen
+	-Alineamiento múltiple y árboles. 
+Paso 5: Comentar y escribir.
+Comentarios: si no estuviera algún programa en Galaxy, habría que mirar si tiene en BioPerl y BioPython. 
+
+Próxima reunión: Viernes 1 de Mayo. Mirados los apuntes, vídeos y literatura de cannabinoides.
