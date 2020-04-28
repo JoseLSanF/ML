@@ -1,0 +1,27 @@
+Paso 0: Preprocesamiento.
+  -Control de calidad de datos NGS. Fastqc es la herramienta más usada. Está ya en Galaxy.
+Gráfica 1: Calidad por base, en el eje Y es la calidad y en el X el tamaño de reads. En el boxplot se ve la calidad por posición. Lo normal es que se pierda algo de calidad al final. Normalmente a partir del 60 ya va perdiendo mucha calidad. 
+Gráfica 2. La calidad por secuencia es el número de lecturas promedio. La mayoría de secuencias está en una calidad alta. Cuanto más desplazada la gráfica a  la derecha esté implica mejor calidad, y cuanto más a la izquierda, más reads con peor calidad. 
+Gráfica 3. Calidad por contenido de secuencia. La distribución de los porcentajes de ACGC.
+G4. Calidad por contenido GC. En cada organismo se ve el porcentaje GC que se tiene.
+G5. Calidad GC por secuencia. En azul la distribución teórica y la roja la que tenemos.
+G6: Calidad por contenido N. Bases para las que no se ha propuesto ni ACGT.
+G7: Disttribución de longitudes. Eso depende de si la máquina hace reads de longitud más o menos fija o variable.
+G8: Duplicación de secuencias. Cuántos reads están repetidos y cuántas veces. Si hubiera muchos repetidos, indicaría que puede haber algún tipo de artefacto, o que tenga significado biológico.
+G9: secuencias sobrerrepresentadas, dice la secuencia, el número y el porcentaje. Pueden servir como indicador de problemas. En fastqc se puede usar una base de datos que sirve para mirar esas secuencias, como las adaptadoras o de contaminación para ver si están ahí sobrerrepresentadas. 
+g10: contenido de los kmeros, secuencias de longitud 5 que son frecuentes, es para ver si hay sesgo a nivel de posiciones, por ejemplo, porque hubiera un primer que contuviera esos kmeros.
+Tabla 11: contenido de los kmeros.
+¿Qué se hace si hay problemas de calidad? Una opción es acortar reads para que se cojan aquellos que tengan una calidad lo suficientemente alta, o filtrar reads por debajo de un umbral de calidad. Cuando se tienen muchos reads, acortar reads es más válido.
+ Para eliminar el trozo está la herramienta FASTQ Trimmer. Se quiere hacer una eliminación (Absolute Values cuando son longitudes fijas, y cuando Percentage cuando es longitud variable). Se quiere eliminar por el 3 prima, que es el final. 
+Se puede mirar el historial Galaxy, útil para ver qué está haciendo el otro.
+
+Ver efecto de adaptadores en la muestra
+Si hay secuencias que están sobrerrepresentadas en un valor muy alto puede significar que sea un adaptador. Herramienta: CutAdapt, va a buscar el adaptador y va a eliminarlo. Se le puede dar los adaptadores o se puede buscar en una base de datos. 
+Herramienta: Advanced Grep. Sirve para mirar si están ahí los patrones que le decimos. 
+Se obtienen todas las filas donde aparece. Hay que hacerlo con ambos adaptadores. Luego se usa CutAdapt. Podría eliminar reads completos dependiendo de dónde se encuentre el adaptador y la estrategia de búsqueda.
+En Galaxy está el Wrapper del Cutadapt. Se utilizan operaciones secuenciales, el adaptador y subsecuencias del adaptador.  Se hace de forma secuencial, al fichero original primero cutadapt, donde la salida de uno será la entrada del siguiente. 
+Cutadapt permite filtrar por calidad y longitud. Ese filtrado se puede hacer luego cuando se hace el variant calling. 
+
+DNA-Seq
+En el trabajo hacemos WGS, secuenciación de exoma completo. 
+OmicTools, referencia para trabajar con datos ómicos.
