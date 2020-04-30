@@ -8,11 +8,19 @@ Paso 2: Anotación.
 Paso 3: Literatura.
 	-Buscar en literatura miembros de la familia de los cannabinoides.
 	-Mirar en bases de datos qué términos tienen, por si se puede filtrar. 
-Paso 4: Filogenia.
-	-Hacer las búsquedas de filogenia y relacionar los genes interesantes. 
-	-Sacar genes por homología y organismos. 
-	-Vamos a sacar en principio 10 secuencias por gen
-	-Alineamiento múltiple y árboles. 
+
+Paso 4
+	4.1: Filogenia.
+		-Hacer las búsquedas de filogenia y relacionar los genes interesantes. 
+		-Sacar genes por homología y organismos. 
+		-Vamos a sacar en principio 10 secuencias por gen.
+		-Alineamiento múltiple y árboles. 
+	4.2: eQTLs:
+		-Mirar en las zonas enriquecidas o donde deberían estar los genes que tienen relación con las rutas por si hubiera otros 
+		genes. Estudios de predicción.
+	4.3: Filogenia de receptores de THC  cannabidiol.
+		-Buscar las secuencias de ambos receptores y buscar homología. Normalmente se usa BLAST.
+	
 Paso 5: Comentar y escribir.
 Comentarios: si no estuviera algún programa en Galaxy, habría que mirar si tiene en BioPerl y BioPython. 
 
