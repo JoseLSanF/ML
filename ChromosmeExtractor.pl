@@ -13,6 +13,7 @@ open(IN, $genomeFile) || die "Error opening file/file non existent. Try again";
 $aux=0;
 open(OUT, ">${chrTag}.fasta");
 while(<IN>){
+chomp $_;
     if($_=~/^>.?\Q$chrTag\E.+/){
         $aux=1;
         print OUT ("$_\n");
