@@ -1,0 +1,9 @@
+cannabinoid biosynthesis
+
+Gene ID	Gene Accession	Gene name	Reaction id	Reaction EC	Enzymatic activity	Evidence	Organism
+G-15537		AAE1	RXN-14172	6.2.1.2	hexanoyl-CoA synthetase	EV-EXP	Cannabis sativa
+G-15354		OAC	RXN-13612	4.4.1.26	olivetolic acid cyclase	EV-EXP	Cannabis sativa
+G-11413		OLS	RXN-13663	No EC#	3,5,7-trioxododecanoyl-CoA synthase	EV-EXP	Cannabis sativa
+G-11413		OLS	RXN-13662	No EC#	3,5,7-trioxododecanoyl-CoA synthase	EV-EXP	Cannabis sativa
+G-58313		CBDAS	RXN-7855	1.21.3.8	cannabidiolate synthase	EV-EXP	Cannabis sativa
+G-9317		THCA	RXN-7854	1.21.3.7	Delta9-tetrahydrocannabinolate synthase	EV-EXP	Cannabis sativa
