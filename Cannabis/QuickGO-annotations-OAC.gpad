@@ -1,0 +1,16 @@
+﻿!gpa-version: 1.1
+!Project_name: EBI GO Annotation program (GOA)
+!URL: https://www.ebi.ac.uk/GOA
+!Contact Email: goa@ebi.ac.uk
+!Date downloaded from QuickGO: 2020-05-09
+!http://purl.obolibrary.org/obo/eco/releases/2020-04-03/eco.obo
+!http://purl.obolibrary.org/obo/go/releases/2020-04-27/extensions/go-plus.owl
+!Filtering parameters selected to generate file:
+!https://www.ebi.ac.uk/QuickGO/annotations?downloadLimit=100&geneProductId=I6WU39
+UniProtKB	I6WU39	enables	GO:0009975	PMID:22802619	ECO:0000314			20121212	UniProt		goEvidence=IDA
+UniProtKB	I6WU39	involved_in	GO:1901697	PMID:22802619	ECO:0000314			20121213	UniProt		goEvidence=IDA
+UniProtKB	I6WU39	involved_in	GO:1901696	PMID:22802619	ECO:0000314			20121213	UniProt		goEvidence=IDA
+UniProtKB	I6WU39	enables	GO:0016829	GO_REF:0000043	ECO:0000322	UniProtKB-KW:KW-0456		20200425	UniProt		goEvidence=IEA
+UniProtKB	I6WU39	enables	GO:0046872	GO_REF:0000043	ECO:0000322	UniProtKB-KW:KW-0479		20200425	UniProt		goEvidence=IEA
+UniProtKB	I6WU39	part_of	GO:0005737	GO_REF:0000043	ECO:0000322	UniProtKB-KW:KW-0963		20200425	UniProt		goEvidence=IEA
+UniProtKB	I6WU39	part_of	GO:0005737	GO_REF:0000044	ECO:0000322	UniProtKB-SubCell:SL-0086		20200425	UniProt		goEvidence=IEA
